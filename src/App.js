@@ -1,11 +1,11 @@
-// src/App.jsx
 import React, { useState } from "react";
-import QRCode from "qrcode.react";
+import { QRCodeCanvas } from "qrcode.react";
 import "./App.css";
 
 function App() {
   const [url, setUrl] = useState("");
   const [showQR, setShowQR] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const downloadQRCode = () => {
     const canvas = document.querySelector("canvas");
@@ -19,8 +19,20 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className={darkMode ? "container dark" : "container"}>
+      <div className="mode-toggle">
+        <label>
+          <input
+            type="checkbox"
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+          />
+          Dark Mode
+        </label>
+      </div>
+
       <h1>URL to QR Code Converter</h1>
+
       <input
         type="text"
         placeholder="Enter a valid URL"
@@ -33,7 +45,7 @@ function App() {
 
       {showQR && (
         <div className="qr-container">
-          <QRCode value={url} size={256} />
+          <QRCodeCanvas value={url} size={256} />
           <button onClick={downloadQRCode}>Download QR Code</button>
         </div>
       )}
@@ -42,4 +54,3 @@ function App() {
 }
 
 export default App;
-

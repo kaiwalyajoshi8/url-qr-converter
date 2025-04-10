@@ -32,3 +32,36 @@ button:disabled {
 .qr-container {
   margin-top: 30px;
 }
+
+.mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+}
+
+/* Dark Mode Styling */
+.container.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+
+.container.dark input {
+  background-color: #222;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.container.dark button {
+  background-color: #1e88e5;
+}
+
+.container.dark button:disabled {
+  background-color: #444;
+}
+
+.container, input, button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
